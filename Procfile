@@ -1,1 +1,1 @@
-web: python -m scotusbot.bot
+bot: python -m scotusbot.bot
