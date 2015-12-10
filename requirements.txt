@@ -15,8 +15,8 @@ lockfile==0.10.2
 lxml==3.4.4
 nameparser==0.3.10
 numpy==1.9.3
--e git+git@github.com:newsdev/nyt-clerk.git#egg=nyt_clerk
--e git+git@github.com:newsdev/nyt-docket.git#egg=nyt_docket
+-e git://github.com/newsdev/nyt-clerk.git#egg=nyt_clerk
+-e git://github.com/newsdev/nyt-docket.git#egg=nyt_docket
 paramiko==1.15.3
 path.py==8.1.2
 pdfminer==20140328
