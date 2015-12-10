@@ -64,9 +64,9 @@ end script
 * Create a heroku app. And [rename](https://devcenter.heroku.com/articles/renaming-apps) it to scotusbot
 ```
 heroku create
-heroku apps:rename newname --app oldname
+heroku apps:rename scotusbot --app oldname
 git remote rm heroku
-heroku git:remote -a newname
+heroku git:remote -a scotusbot
 ```
 
 * Add your MongoDB production server
@@ -90,7 +90,8 @@ heroku config:set SCOTUSBOT_SLACK_CHANNEL='C012345' \
 SCOTUSBOT_SLACK_TOKEN='xoxb-1234567890-AbcDefGhijkLmNOpQRstUvWXyz' \
 SCOTUSBOT_MONGO_URL=mongodb://username:password@somewhere.mongolayer.com:10011/my_app
 ```
-* Launch
+* Deploy code and start the bot
 ```
 git push heroku master
+heroku ps:scale bot=1 --app scotusbot
 ```
