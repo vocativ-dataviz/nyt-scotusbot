@@ -59,3 +59,38 @@ script
   cd /home/ubuntu/nyt-scotusbot && /home/ubuntu/.virtualenvs/nyt-scotusbot/bin/python /home/ubuntu/nyt-scotusbot/scotusbot/bot.py
 end script
 ```
+
+### Heroku
+* Create a heroku app. And [rename](https://devcenter.heroku.com/articles/renaming-apps) it to scotusbot
+```
+heroku create
+heroku apps:rename newname --app oldname
+git remote rm heroku
+heroku git:remote -a newname
+```
+
+* Add your MongoDB production server
+```
+heroku addons:docs mongohq
+```
+
+*  Export the production MongoDB URL to your environment variables
+```
+SCOTUSBOT_MONGO_URL=mongodb://username:password@somewhere.mongolayer.com:10011/my_app
+```
+
+* Preload your shiny new production server
+```
+python -m scotusbot.preload
+```
+
+* Set your config variables
+```
+heroku config:set SCOTUSBOT_SLACK_CHANNEL='C012345' \
+SCOTUSBOT_SLACK_TOKEN='xoxb-1234567890-AbcDefGhijkLmNOpQRstUvWXyz' \
+SCOTUSBOT_MONGO_URL=mongodb://username:password@somewhere.mongolayer.com:10011/my_app
+```
+* Launch
+```
+git push heroku master
+```
